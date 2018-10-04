@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-client';
+import SongList from './components/SongList';
 
 // The ApolloProvider is the component that will be communicating
 // with the GraphQL server to provide data to React
@@ -13,7 +14,7 @@ const client = new ApolloClient({});
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <div>Lyrical</div>
+      <SongList />
     </ApolloProvider>
   );
 };
