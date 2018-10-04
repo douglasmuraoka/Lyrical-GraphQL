@@ -4,6 +4,7 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import ApolloClient from 'apollo-client';
 import SongList from './components/SongList';
 import App from './components/App';
+import SongCreate from './components/SongCreate';
 
 // The ApolloProvider is the component that will be communicating
 // with the GraphQL server to provide data to React
@@ -19,6 +20,7 @@ const Root = () => {
       <Router history={hashHistory}>
         <Route path="/" component={App}>
           <IndexRoute component={SongList} />
+          <Route path="song/new" component={SongCreate} />
         </Route>
       </Router>
     </ApolloProvider>
