@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Link, hashHistory } from 'react-router';
+import fetchSongsQuery from '../queries/fetchSongs';
 
 /**
  * This is the component responsible for creating
@@ -22,7 +23,15 @@ class SongCreate extends Component {
     this.props.mutate({
       variables: {
         title: this.state.title
-      }
+      },
+      // By providing "refetchQueries", we can define which queries
+      // are going to be executed as soon as this mutation completes.
+      // This way, we can always keep our song list updated when we
+      // redirect our user to the SongList component, after the
+      // song creation.
+      refetchQueries: [
+        { query: fetchSongsQuery, variables: {} } // here you can use variables too!
+      ]
     }).then(() => hashHistory.push('/'));
   }
 
