@@ -8,7 +8,7 @@ import { ApolloProvider } from 'react-apollo';
 
 // Empty configuration assumes the GraphQL server is set up on
 // /graphql route
-client = new ApolloClient({});
+const client = new ApolloClient({});
 
 const Root = () => {
   return (
