@@ -14,7 +14,16 @@ import { ApolloProvider } from 'react-apollo';
 
 // Empty configuration assumes the GraphQL server is set up on
 // /graphql route
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  // This is the function used to identify every single piece of
+  // data fetched from the GraphQL server.
+  // It is used to automatically update any entry whenever it
+  // is changed by any mutation.
+  // When using this function, we must assure to ask
+  // for the id, otherwise Apollo won't know how to identify
+  // the entry fetched.
+  dataIdFromObject: obj => obj.id
+});
 
 const Root = () => {
   return (
